@@ -6,7 +6,8 @@
 ---
 Calendar-ui provides easy-to-use , yet simple react calendar component with convenient monthly navigation(prev, next).
 
-Calendar's year and month are set based on the user's local timezone automatically.
+Calendar's year and month are set based on the user's local timezone automatically.<br/>
+You can mark a color dot on date but it's experimental stage.
 
 
 ### Installation
@@ -22,11 +23,14 @@ import Calendar from '@yundal/calendar-ui';
 import '@yundal/calendar-ui/index.css';
 
 function App() {
-  return <Calendar />;
+  return <Calendar
+            style?='whatever you want with Tailwind CSS. This is optional and the default is "w-550 p-5"'
+            mockdata?={[id: "1", date: "2026-04-09", label: "meeting", color: "primary"]} 
+        />;
 }
 ```
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/528824d1-24d6-47bc-b02d-c2d640bd26ab" alt="Calender Example" style="width: 400px"/>
+  <img src="https://github.com/user-attachments/assets/a1c8313f-5cc2-4a80-bc26-1832e3421567" alt="Calender Example" style="width: 400px"/>
 </p>
 
 
