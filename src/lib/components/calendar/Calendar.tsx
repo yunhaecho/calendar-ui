@@ -7,9 +7,10 @@ import EventExplainBox from '../event/EventExplainBox'
 
 type CalendarProps = {
   style?: string
+  mockdata?: CalendarEvent[]
 }
 
-const mockData: CalendarEvent[] = [
+const mockDatas: CalendarEvent[] = [
   {
     id: '1',
     date: '2026-04-09',
@@ -30,7 +31,7 @@ const mockData: CalendarEvent[] = [
   },
 ]
 
-const Calendar = ({ style }: CalendarProps) => {
+const Calendar = ({ style, mockdata }: CalendarProps) => {
   const { currentYear, currentMonth, goToPrevOrNextMonth } =
     useMonthlyCalendar()
 
@@ -62,7 +63,7 @@ const Calendar = ({ style }: CalendarProps) => {
                   key={day.kstDate.getTime()}
                   day={day}
                   isCurrentMonth={isCurrentMonth}
-                  events={mockData}
+                  events={mockdata}
                 />
               )
             })}

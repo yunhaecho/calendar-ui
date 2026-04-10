@@ -8,7 +8,7 @@ type CalendarCellProps = {
     formattedDate: string //yyyy-mm-dd
   }
   isCurrentMonth: boolean
-  events: CalendarEvent[]
+  events?: CalendarEvent[]
 }
 
 const CalendarCell = ({ day, isCurrentMonth, events }: CalendarCellProps) => {
@@ -26,17 +26,18 @@ const CalendarCell = ({ day, isCurrentMonth, events }: CalendarCellProps) => {
       >
         {day.kstDate.getDate()}
       </time>
-      {events
-        .filter(evt => evt.date === day.formattedDate)
-        .map(evt => (
-          <div
-            key={evt.id}
-            className="flex w-full items-center justify-center gap-5 px-2 text-sm"
-          >
-            <HighlightBox color={evt.color} />
-            <span className="truncate">{evt.label}</span>
-          </div>
-        ))}
+      {events &&
+        events
+          .filter(evt => evt.date === day.formattedDate)
+          .map(evt => (
+            <div
+              key={evt.id}
+              className="flex w-full items-center justify-center gap-5 px-2 text-sm"
+            >
+              <HighlightBox color={evt.color} />
+              <span className="truncate">{evt.label}</span>
+            </div>
+          ))}
     </li>
   )
 }
