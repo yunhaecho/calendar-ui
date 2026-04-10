@@ -2,16 +2,14 @@ import js from '@eslint/js'
 import importPlugin from 'eslint-plugin-import'
 import { defineConfig, globalIgnores } from 'eslint/config'
 import plugin from '@typescript-eslint/eslint-plugin'
+import tsparser from '@typescript-eslint/parser'
 
 export default defineConfig([
   globalIgnores(['dist/**', 'tailwind.config.js']),
   js.configs.recommended,
   {
-    parser: '@typescript-eslint/parser',
-    parserOptions: {
-      ecmaVersion: 2020,
-      sourceType: 'module',
-      ecmaFeatures: { jsx: true },
+    languageOptions: {
+      parser: tsparser,
     },
     plugins: {
       import: importPlugin,
