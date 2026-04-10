@@ -1,5 +1,5 @@
 # Dependencies
-/node_modules/
+/node_modules
 
 # Build output
 /dist/
@@ -8,6 +8,7 @@
 # 캐시
 .eslintcache
 .prettiercache
+.cache
 
 # 로그
 npm-debug.log*
@@ -31,6 +32,7 @@ Thumbs.db
 
 # 테스트 커버리지
 /coverage/
+*.tgz
 
 # 타입스크립트 빌드 아웃풋
 *.tsbuildinfo
@@ -40,3 +42,4 @@ Thumbs.db
 
 # Storybook 빌드 결과
 /storybook-static/
+.yalc

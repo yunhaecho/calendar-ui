@@ -1,11 +1,7 @@
-import 'tailwindcss-preset-px-to-rem';
-
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   presets: [require('tailwindcss-preset-px-to-rem')],
-  content: [
-    './src/lib/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/lib/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
@@ -57,5 +53,3 @@ module.exports = {
   },
   plugins: [],
 }
-
-
