@@ -1,71 +1,76 @@
-import { useMemo } from 'react';
-import {
-  CalendarCell,
-  WeekdayHeader,
-  CalendarHeader,
-} from '@/lib/components/calendar';
-import useMonthlyCalendar from '@/lib/hooks/useMonthlyCalendar';
-import { generateCalendar } from '@/lib/utils/dateUtils';
-import { CalendarProps } from '@/lib/utils/type';
+import { useMemo } from 'react'
+import { CalendarCell, WeekdayHeader, CalendarHeader } from '..'
+import useMonthlyCalendar from '../../hooks/useMonthlyCalendar'
+import { generateCalendar } from '../../utils/dateUtils'
+import { CalendarEvent } from '../../utils/eventTypes'
+import EventExplainBox from '../event/EventExplainBox'
 
-const Calendar = ({ size = 'sm' }: CalendarProps) => {
+const mockData: CalendarEvent[] = [
+  {
+    id: '1',
+    date: '2026-04-09',
+    label: 'meeting',
+    color: 'primary',
+  },
+  {
+    id: '2',
+    date: '2026-04-10',
+    label: 'holiday',
+    color: 'green',
+  },
+  {
+    id: '4',
+    date: '2026-04-25',
+    label: 'pilates',
+    color: 'blue',
+  },
+]
+
+const Calendar = (style: string) => {
   const { currentYear, currentMonth, goToPrevOrNextMonth } =
-    useMonthlyCalendar();
+    useMonthlyCalendar()
 
-  const goToPrevMonth = () => goToPrevOrNextMonth(-1);
-  const goToNextMonth = () => goToPrevOrNextMonth(1);
+  const goToPrevMonth = () => goToPrevOrNextMonth(-1)
+  const goToNextMonth = () => goToPrevOrNextMonth(1)
   const daysInCalendar = useMemo(() => {
-    return generateCalendar(new Date(currentYear, currentMonth));
-  }, [currentMonth, currentYear]);
-
-  // default size
-  const sizeClasses = {
-    sm: 'w-500 px-4',
-    md: 'w-700 px-6',
-    lg: 'w-850 px-8',
-  };
-
-  const containerClasses = `${sizeClasses[size]}`;
+    return generateCalendar(new Date(currentYear, currentMonth))
+  }, [currentMonth, currentYear])
 
   return (
-    <section className={`${containerClasses}`}>
+    <div className={`${style ?? 'w-550 p-5'}`}>
       <CalendarHeader
         currentMonth={currentMonth}
         currentYear={currentYear}
         goToPrevMonth={goToPrevMonth}
         goToNextMonth={goToNextMonth}
       />
-
       <div className="flex h-full w-full flex-col text-center">
-        <WeekdayHeader />
+        <section>
+          <WeekdayHeader />
+        </section>
 
-        <section
-          className={` ${
-            size === 'sm'
-              ? 'h-340'
-              : size === 'md'
-                ? 'h-500'
-                : size === 'lg'
-                  ? 'h-600'
-                  : 'h-300'
-          }`}
-        >
+        <section>
           <ul className="grid h-full grid-cols-7 gap-10">
             {daysInCalendar.map(day => {
-              const isCurrentMonth = day.isCurrentMonth;
+              const isCurrentMonth = day.isCurrentMonth
               return (
                 <CalendarCell
                   key={day.kstDate.getTime()}
                   day={day}
                   isCurrentMonth={isCurrentMonth}
+                  events={mockData}
                 />
-              );
+              )
             })}
           </ul>
         </section>
-      </div>
-    </section>
-  );
-};
 
-export default Calendar;
+        <section>
+          <EventExplainBox />
+        </section>
+      </div>
+    </div>
+  )
+}
+
+export default Calendar

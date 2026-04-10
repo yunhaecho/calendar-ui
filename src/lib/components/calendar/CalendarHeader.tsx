@@ -1,5 +1,5 @@
-import leftArrowIcon from '../../assets/left-arrow.svg';
-import rightArrowIcon from '../../assets/right-arrow.svg';
+import LeftArrow from '../../assets/LeftArrow'
+import RightArrow from '../../assets/RightArrow'
 
 const monthNames = [
   'January',
@@ -14,7 +14,7 @@ const monthNames = [
   'October',
   'November',
   'December',
-];
+]
 
 const CalendarHeader = ({
   currentMonth,
@@ -22,47 +22,40 @@ const CalendarHeader = ({
   goToPrevMonth,
   goToNextMonth,
 }: {
-  currentMonth: number;
-  currentYear: number;
-  goToPrevMonth: () => void;
-  goToNextMonth: () => void;
+  currentMonth: number
+  currentYear: number
+  goToPrevMonth: () => void
+  goToNextMonth: () => void
 }) => {
   return (
-    <header
-      className="mb-26 flex h-32 w-full items-center"
-      aria-label="Calendar header"
+    <nav
+      className="mx-15 mb-20 grid h-full grid-cols-[1fr_1fr]"
+      aria-label="Calendar navigation buttons"
     >
-      <nav
-        className="grid w-full grid-cols-[1fr_2fr_1fr] items-center"
-        aria-label="Calendar navigation buttons"
+      <p
+        className="head-24-600 flex h-full items-center justify-start"
+        aria-label={`${monthNames[currentMonth]} ${currentYear}`}
       >
+        {`${monthNames[currentMonth]} ${currentYear}`}
+      </p>
+      <div className="flex h-full w-full flex-row justify-end">
         <div
-          className="justify-items-end"
           onClick={goToPrevMonth}
           aria-label="Previous month"
+          className="bg-color-transition mr-10 flex items-center justify-center rounded-8 border border-gray-300 px-12 py-10 text-15 font-thin hover:bg-gray-200"
         >
-          <img
-            className="bg-color-transition flex h-full items-center rounded-8 border border-gray-300 p-10 text-15 font-thin hover:bg-gray-200"
-            src={leftArrowIcon}
-            alt="LeftArrowIcon"
-          />
+          <LeftArrow />
         </div>
-        <p
-          className="head-24-600 text-center"
-          aria-label={`${monthNames[currentMonth]} ${currentYear}`}
+        <div
+          onClick={goToNextMonth}
+          aria-label="Next month"
+          className="bg-color-transition flex items-center justify-center rounded-8 border border-gray-300 px-12 py-10 text-15 font-thin hover:bg-gray-200"
         >
-          {`${monthNames[currentMonth]} ${currentYear}`}
-        </p>
-        <div onClick={goToNextMonth} aria-label="Next month">
-          <img
-            className="bg-color-transition flex h-full items-center rounded-8 border border-gray-300 p-10 text-15 font-thin hover:bg-gray-200"
-            src={rightArrowIcon}
-            alt="LeftArrowIcon"
-          />
+          <RightArrow />
         </div>
-      </nav>
-    </header>
-  );
-};
+      </div>
+    </nav>
+  )
+}
 
-export default CalendarHeader;
+export default CalendarHeader
