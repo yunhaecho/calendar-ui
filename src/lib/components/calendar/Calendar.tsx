@@ -5,6 +5,10 @@ import { generateCalendar } from '../../utils/dateUtils'
 import { CalendarEvent } from '../../utils/eventTypes'
 import EventExplainBox from '../event/EventExplainBox'
 
+type CalendarProps = {
+  style?: string
+}
+
 const mockData: CalendarEvent[] = [
   {
     id: '1',
@@ -26,7 +30,7 @@ const mockData: CalendarEvent[] = [
   },
 ]
 
-const Calendar = (style: string) => {
+const Calendar = ({ style }: CalendarProps) => {
   const { currentYear, currentMonth, goToPrevOrNextMonth } =
     useMonthlyCalendar()
 
