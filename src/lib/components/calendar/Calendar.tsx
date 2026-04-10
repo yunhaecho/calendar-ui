@@ -2,15 +2,19 @@ import { useMemo } from 'react'
 import { CalendarCell, WeekdayHeader, CalendarHeader } from '..'
 import useMonthlyCalendar from '../../hooks/useMonthlyCalendar'
 import { generateCalendar } from '../../utils/dateUtils'
-import { CalendarEvent } from '../../utils/eventTypes'
 import EventExplainBox from '../event/EventExplainBox'
 
 type CalendarProps = {
   style?: string
-  mockdata?: CalendarEvent[]
+  mockdata?: {
+    id: string
+    date: string // "yyyy-MM-dd"
+    label: string
+    color: 'primary' | 'blue' | 'green' | 'orange' | 'red'
+  }[]
 }
 
-const mockDatas: CalendarEvent[] = [
+const mockDatas = [
   {
     id: '1',
     date: '2026-04-09',

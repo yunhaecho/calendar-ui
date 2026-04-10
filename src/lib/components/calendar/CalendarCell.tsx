@@ -1,4 +1,3 @@
-import { CalendarEvent } from '../../utils/eventTypes'
 // import { inputSchedule } from "../../utils/inputSchedule";
 import HighlightBox from '../event/HighlightBox'
 
@@ -8,7 +7,12 @@ type CalendarCellProps = {
     formattedDate: string //yyyy-mm-dd
   }
   isCurrentMonth: boolean
-  events?: CalendarEvent[]
+  events?: {
+    id: string
+    date: string // "yyyy-MM-dd"
+    label: string
+    color: 'primary' | 'blue' | 'green' | 'orange' | 'red'
+  }[]
 }
 
 const CalendarCell = ({ day, isCurrentMonth, events }: CalendarCellProps) => {
