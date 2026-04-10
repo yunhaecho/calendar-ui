@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 function useMonthlyCalendar() {
-  const currentDate = new Date();
-  const [currentYear, setCurrentYear] = useState(currentDate.getFullYear());
-  const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth()); //0-indexed
+  const currentDate = new Date()
+  const [currentYear, setCurrentYear] = useState(currentDate.getFullYear())
+  const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth()) //0-indexed
 
   const goToPrevOrNextMonth = (deltaMonth: number) => {
     setCurrentMonth(prevMonth => {
-      const newMonth = (prevMonth + deltaMonth + 12) % 12;
-      return newMonth;
-    });
+      const newMonth = (prevMonth + deltaMonth + 12) % 12
+      return newMonth
+    })
 
     setCurrentYear(
       prevYear =>
@@ -18,10 +18,10 @@ function useMonthlyCalendar() {
           ? -1
           : deltaMonth > 0 && currentMonth === 11
             ? 1
-            : 0),
-    );
-  };
-  return { currentMonth, currentYear, goToPrevOrNextMonth };
+            : 0)
+    )
+  }
+  return { currentMonth, currentYear, goToPrevOrNextMonth }
 }
 
-export default useMonthlyCalendar;
+export default useMonthlyCalendar
