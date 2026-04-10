@@ -2,24 +2,24 @@
   "name": "@yundal/calendar-ui",
   "private": false,
   "version": "0.1.12",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
   "type": "module",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
-    "./index.css": "./dist/index.css"
+    "./style.css": "./dist/style.css"
   },
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/yuunhae/calendar-ui.git",
+  "repository": {
+    "url": "https://github.com/yuunhae/calendar-ui.git"
+  },
   "author": "yunhae",
   "license": "MIT",
-  "description": "An easy-to-use React calendar component written in TypeScript, optimized and bundled with tsup.",
+  "description": "An easy-to-use React calendar component written in TypeScript, optimized and bundled with tsdown.",
   "devDependencies": {
     "@chromatic-com/storybook": "3",
     "@eslint/js": "^9.27.0",
@@ -31,11 +31,12 @@
     "@storybook/react": "8.6.14",
     "@storybook/react-vite": "8.6.14",
     "@storybook/test": "8.6.14",
+    "@tsdown/css": "^0.21.7",
     "@types/node": "^22.15.21",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
-    "@typescript-eslint/parser": "^8.32.1",
+    "@typescript-eslint/parser": "^8.58.1",
     "@vitest/browser": "^3.1.4",
     "@vitest/coverage-v8": "^3.1.4",
     "autoprefixer": "^10.4.21",
@@ -48,15 +49,16 @@
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "publint": "^0.3.18",
     "storybook": "8.6.14",
     "tailwindcss": "3",
     "tailwindcss-preset-px-to-rem": "^1.2.1",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.21.7",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.32.1",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-svgr": "^4.3.0",
-    "vitest": "^3.1.4"
+    "vitest": "^3.1.4",
+    "yalc": "^1.0.0-pre.53"
   },
   "dependencies": {
     "date-fns": "^4.1.0"
@@ -66,11 +68,11 @@
     "react-dom": ">=18"
   },
   "scripts": {
-    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
-    "build": "tsup src/index.ts --format esm,cjs --dts && yarn build-tailwind",
+    "dev": "tsdown src/index.ts --format esm,cjs --watch --dts",
+    "build": "tsdown && yarn build-tailwind",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build-tailwind": "npx tailwindcss -c tailwind.config.js -i ./src/lib/index.css -o ./dist/index.css --minify",
+    "build-tailwind": "npx tailwindcss -c tailwind.config.js -i ./index.css -o ./dist/style.css --minify",
     "lint": "eslint",
     "format": "prettier --write src/**/*.{ts,tsx,js,jsx,json,md}",
     "format:check": "prettier --check src/**/*.{ts,tsx,js,jsx,json,md}",

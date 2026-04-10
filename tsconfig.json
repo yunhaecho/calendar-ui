@@ -11,16 +11,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    
+
     "strict": true,
-    "declaration": true,
     "outDir": "dist",
     "esModuleInterop": true,
-
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "src/custom.d.ts"]
+  "include": ["src/**/*", "global.d.ts"]
 }
